@@ -12,7 +12,7 @@ ACCESS_KEY = config['twitter']['access_key']
 ACCESS_SECRET = config['twitter']['access_secret']
 
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET) #established bot's access to Twitter API
-auth.set_access_token(ACCESS_KEY, ACCESS_SECRET) #associates bot with specific Twitter account
+auth.set_access_token(ACCESS_KEY, ACCESS_SECRET) #associate bot with specific Twitter account
 
 api = tweepy.API(auth) #object for making API requests
 
