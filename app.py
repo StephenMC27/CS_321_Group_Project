@@ -11,4 +11,5 @@ CONSUMER_SECRET = config['twitter']['consumer_secret']
 ACCESS_KEY = config['twitter']['access_key']
 ACCESS_SECRET = config['twitter']['access_secret']
 
+
 #api.update_status('Testing, testing, 1, 2, 3...')
