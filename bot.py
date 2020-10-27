@@ -1,5 +1,4 @@
 import tweepy
-import yaml
 
 class Bot:
 
