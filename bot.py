@@ -6,11 +6,21 @@ class Bot:
     api = None
 
     #connect bot to Twitter's API
+    @classmethod
     def authorize(cls, consumer_key, consumer_secret, access_key, access_secret):
-        auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET) #established bot's access to Twitter API
-        auth.set_access_token(ACCESS_KEY, ACCESS_SECRET) #associate bot with specific Twitter account
-        api = tweepy.API(auth) #object for making API requests
+        try:
+            cls.auth = tweepy.OAuthHandler(consumer_key, consumer_secret) #established bot's access to Twitter API
+            cls.auth.set_access_token(access_key, access_secret) #associate bot with specific twitter account
+            cls.api = tweepy.API(cls.auth) #object for making API requests
+            print('Successfully connected to Twitter API!')
+        except:
+            print('Error: Twitter API access could not be established.')
 
     #publish Tweet
+    @classmethod
     def publish_tweet(cls, tweet_str):
-        api.update_status(tweet_str)
+        try:
+            cls.api.update_status(tweet_str)
+            print('Tweet successfully published!')
+        except:
+            print('Error: Twitter API access has not been established.')
