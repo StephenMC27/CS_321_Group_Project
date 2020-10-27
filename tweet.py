@@ -7,4 +7,4 @@ class Tweet:
         self.image = image
 
     def format(cls) -> str:
-        
+        return None;
