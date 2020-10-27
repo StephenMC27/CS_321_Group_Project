@@ -6,6 +6,5 @@ class Tweet:
         self.quote_str = quote_str
         self.image = image
 
-    def format() -> str:
-
-        #organize strings into tweet string here
+    def format(cls) -> str:
+        
