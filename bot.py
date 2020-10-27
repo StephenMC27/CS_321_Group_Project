@@ -1,9 +1,12 @@
+import tweepy
+import yaml
+
 class Bot:
 
-    def set_api_keys(cls, consumer_key, consumer_secret, access_key, access_secret):
-        cls.consumer_key = consumer_key
-        cls.consumer_secret = consumer_secret
-        cls.access_key = access_key
-        cls.access_secret = access_secret
+    auth = None
+    api = None
 
-    
+    #connect bot to Twitter's API
+    def authorize(cls, consumer_key, consumer_secret, access_key, access_secret):
+        auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET) #established bot's access to Twitter API
+        auth.set_access_token(ACCESS_KEY, ACCESS_SECRET) #associate bot with specific Twitter account
