@@ -10,9 +10,11 @@ for i in range(1,10):
     response = session.get(f'https://www.goodreads.com/quotes/tag/inspirational?page={i}')
     quote_elements += response.html.find('.quote.mediumText ')
 
+print(f'# of quotes: {len(quote_elements)}')
+
 csv_file = open('quotes.csv', 'w') #open new csv file
 csv_writer = csv.writer(csv_file)
-csv_writer.writerow(['Quote + Credit'])
+csv_writer.writerow(['Quote + Credit']) #column name
 
 #loop through quote-containing HTML elements and store the text and author in csv_file
 for quote_element in quote_elements:
@@ -21,6 +23,5 @@ for quote_element in quote_elements:
     quote_string = s.join(quote_string.split('"'))
     csv_writer.writerow([quote_string])
     print(quote_string)
-    print(len(quote_elements))
 
 # print(quote_elements[3].find('.quoteText', clean=True)[0].text.split('//', 1)[0])
