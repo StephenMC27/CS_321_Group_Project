@@ -1,13 +1,26 @@
 from requests_html import HTMLSession
+import csv
 
 session = HTMLSession()
 
-response = session.get('https://www.goodreads.com/quotes/tag/inspirational')
+#scrape all 100 pages of website
+quote_elements = []
+for i in range(1,10):
+    print(i)
+    response = session.get(f'https://www.goodreads.com/quotes/tag/inspirational?page={i}')
+    quote_elements += response.html.find('.quote.mediumText ')
 
-quote_elements = response.html.find('.quote.mediumText ')
+csv_file = open('quotes.csv', 'w') #open new csv file
+csv_writer = csv.writer(csv_file)
+csv_writer.writerow(['Quote + Credit'])
 
+#loop through quote-containing HTML elements and store the text and author in csv_file
 for quote_element in quote_elements:
     quote_string = quote_element.find('.quoteText')[0].text.split('//', 1)[0]
+    s = ' '
+    quote_string = s.join(quote_string.split('"'))
+    csv_writer.writerow([quote_string])
     print(quote_string)
+    print(len(quote_elements))
 
 # print(quote_elements[3].find('.quoteText', clean=True)[0].text.split('//', 1)[0])
