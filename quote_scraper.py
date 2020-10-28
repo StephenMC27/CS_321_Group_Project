@@ -24,4 +24,6 @@ for quote_element in quote_elements:
     csv_writer.writerow([quote_string])
     print(quote_string)
 
+csv_file.close()
+
 # print(quote_elements[3].find('.quoteText', clean=True)[0].text.split('//', 1)[0])
