@@ -45,7 +45,7 @@ current_temperature = int(current_temperature)
 # Key "weather" is stored to k
 k = j["weather"]
 
-# Stores the values of the keys
+# Stores the values of the keys.
 weather_description = k[0]["description"]
 
 # Print temperature, description, and precipitation probability.
