@@ -25,11 +25,6 @@ new_data = requests.get(chain)
 # Convert from json to python.
 j = new_data.json()
 
-#algorithm to fetch chance of rain
-#needed seperate algorithm since API does not store this variable 
-#in a easy to find place
-#CURRENTLY IN THE WORKS
-print(j)
 # Key "main" is stored to var
 var = j["main"]
 
