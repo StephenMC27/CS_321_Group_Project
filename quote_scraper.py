@@ -19,8 +19,9 @@ csv_writer.writerow(['Quote + Credit']) #column name
 #loop through quote-containing HTML elements and store the text and author in csv_file
 for quote_element in quote_elements:
     quote_string = quote_element.find('.quoteText')[0].text.split('//', 1)[0]
-    s = ' '
-    quote_string = s.join(quote_string.split('"'))
+    split_string = quote_string.split('""')
+    s = '"'
+    quote_string = s.join(split_string)
     csv_writer.writerow([quote_string])
     print(quote_string)
 
