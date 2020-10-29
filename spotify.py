@@ -6,18 +6,11 @@ from spotipy.oauth2 import SpotifyClientCredentials
 with open('config.yaml', 'r') as config_file:
 	config = yaml.load(config_file, Loader=yaml.FullLoader)
 
-#save API keys
+#save API keys for spotify API
 SPOTIFY_CLIENT_ID = config['spotify']['client_id']
 SPOTIFY_CLIENT_SECRET = config['spotify']['client_secret']
 
 sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id=SPOTIFY_CLIENT_ID, client_secret=SPOTIFY_CLIENT_SECRET))
-
-"""
-example usage of search feature for spotify api: 
-results = sp.search(q='maren morris', limit=10)
-for idx, track in enumerate(results['tracks']['items']):
-    print(idx, track['name'])
-"""
 
 # call with a random value for offset to provide random selection from the weekly created playlist
 
@@ -34,4 +27,9 @@ for idx, track in enumerate(result1['items']):
 # maybe construct an array to store the songs for the week or something of that sort?
 
 
-
+"""
+example usage of search feature for spotify api: 
+results = sp.search(q='maren morris', limit=10)
+for idx, track in enumerate(results['tracks']['items']):
+    print(idx, track['name'])
+"""
