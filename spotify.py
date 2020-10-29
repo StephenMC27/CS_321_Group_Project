@@ -3,7 +3,7 @@ import yaml
 
 #read in API keys from config.yaml
 with open('config.yaml', 'r') as config_file:
-    config = yaml.load(config_file)
+	config = yaml.load(config_file, Loader=yaml.FullLoader)
 
 #save API keys
 SPOTIFY_CLIENT_ID = config['spotify']['client_id']
