@@ -19,7 +19,7 @@ place = 'Fairfax'
 # chain is used for OWM API
 chain = url + "appid=" + OWM_API_KEY + "&q=" + place
 
-# fetches chains data through requests
+# fetches chains data through requests.
 new_data = requests.get(chain)
 
 # Convert from json to python
