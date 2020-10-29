@@ -3,7 +3,7 @@
 import requests
 import yaml
 
-# pull api key from secure file
+# pull api key from secure file.
 with open('config.yaml', 'r') as config_file:
     config = yaml.load(config_file)
     
@@ -29,7 +29,7 @@ j = new_data.json()
 #needed seperate algorithm since API does not store this variable 
 #in a easy to find place
 #CURRENTLY IN THE WORKS
-
+print(j)
 # Key "main" is stored to var
 var = j["main"]
 
@@ -48,6 +48,13 @@ k = j["weather"]
 # Stores the values of the keys.
 weather_description = k[0]["description"]
 
+# Key "rain" is stored to rain
+rain = j["rain"]
+
+# Stores the value of the key (total amount rained in inches)
+lastHour = rain["1h"]
+
 # Print temperature, description, and precipitation probability.
 print("\nTemperature = " +	str(current_temperature) + "°F")
 print("Description = " + str(weather_description))
+print("Total amount of rain in last hour: " + str(lastHour) + "inches")
