@@ -5,8 +5,8 @@ import yaml
 
 # pull api key from secure file.
 with open('config.yaml', 'r') as config_file:
-    config = yaml.load(config_file)
-    
+    config = yaml.load(config_file, yaml.FullLoader)
+
 # OpenWeatherMap API Key:
 OWM_API_KEY = config['OWM']['OWM_api_key']
 
@@ -26,7 +26,7 @@ new_data = requests.get(chain)
 j = new_data.json()
 
 #algorithm to fetch chance of rain
-#needed seperate algorithm since API does not store this variable 
+#needed seperate algorithm since API does not store this variable
 #in a easy to find place
 #CURRENTLY IN THE WORKS
 print(j)
