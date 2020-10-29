@@ -2,14 +2,14 @@
 # the data is stored into python dictionaries
 import requests
 import yaml
-    
+
 # Fairfax's weather of choice
 place = 'Fairfax'
 # pull api key from secure file.
 def weather_str(place, other_place=None):
     with open('config.yaml', 'r') as config_file:
         config = yaml.load(config_file)
-    
+
     # OpenWeatherMap API Key:
     OWM_API_KEY = config['OWM']['OWM_api_key']
 
@@ -46,7 +46,7 @@ def weather_str(place, other_place=None):
     weather_description = k[0]["description"]
     #print("\nDescription = " + str(weather_description))
     weather_str = "\nTemperature = " + str(current_temperature) + "°F" + "\nDescription = " + str(weather_description
-    
+
     return weather_str
 #def rain_total(j):
     # Key "rain" is stored to rain
