@@ -48,6 +48,6 @@ k = j["weather"]
 # Stores the values of the keys
 weather_description = k[0]["description"]
 
-# Print temperature, description, and precipitation probability
+# Print temperature, description, and precipitation probability.
 print("\nTemperature = " +	str(current_temperature) + "°F")
 print("Description = " + str(weather_description))
