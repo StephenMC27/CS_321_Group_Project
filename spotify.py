@@ -12,7 +12,7 @@ SPOTIFY_CLIENT_SECRET = config['spotify']['client_secret']
 
 sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id=SPOTIFY_CLIENT_ID, client_secret=SPOTIFY_CLIENT_SECRET))
 
-# call with a random value for offset to provide random selection from the weekly created playlist
+# call with a random value for offset to provide random selection from the weekly created playlist, make sure offset is less than 100
 
 result1 = sp.playlist_items(playlist_id='37i9dQZF1DX4JAvHpjipBk', offset=0, limit=7, additional_types={'track'})
 print()
