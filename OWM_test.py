@@ -8,7 +8,7 @@ class weather_str:
     # pull api key from secure file.
     def weather_str(place, other_place=None):
         with open('config.yaml', 'r') as config_file:
-            config = yaml.load(config_file)
+            config = yaml.load(config_file, Loader=yaml.FullLoader)
     
         # OpenWeatherMap API Key:
         OWM_API_KEY = config['OWM']['OWM_api_key']
