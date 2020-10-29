@@ -15,16 +15,14 @@ sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id=SPOTIFY_CLI
 
 
 
-results = sp.search(q='maren morris', limit=3)
-print(results)
+results = sp.search(q='maren morris', limit=10)
 for idx, track in enumerate(results['tracks']['items']):
     print(idx, track['name'])
 
 
-# consider calling this with a random value for offset to provide random selection from the weekly created playlist
+# call with a random value for offset to provide random selection from the weekly created playlist
 
-result1 = sp.playlist_items(playlist_id='37i9dQZF1DX4JAvHpjipBk', limit=5, additional_types={'track'})
-print(result1)
+result1 = sp.playlist_items(playlist_id='37i9dQZF1DX4JAvHpjipBk', offset=50, limit=5, additional_types={'track'})
 print()
 for idx1, track1 in enumerate(result1['items']):
 	trackInfo = track1['track']
