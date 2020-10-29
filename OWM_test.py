@@ -2,20 +2,26 @@
 # the data is stored into python dictionaries
 import requests
 import yaml
-class weather_str:
-    # Fairfax's weather of choice
-    place = 'Fairfax'
+class Weather:
+    
     # pull api key from secure file.
-    def weather_str(place, other_place=None):
+    @classmethod
+    def secure_key(cls):
         with open('config.yaml', 'r') as config_file:
-            config = yaml.load(config_file, Loader=yaml.FullLoader)
+            config = yaml.load(config_file)
     
         # OpenWeatherMap API Key:
         OWM_API_KEY = config['OWM']['OWM_api_key']
-
+        gather_info(OWM_API_KEY)
+        
+    @classmethod
+    def gather_info(OWM_API_KEY):
         # OpenWeatherMap's URL
         url = "http://api.openweathermap.org/data/2.5/weather?"
-
+        
+        # Fairfax's weather of choice
+        place = 'Fairfax'
+        
         # chain variable to store
         # chain is used for OWM API
         chain = url + "appid=" + OWM_API_KEY + "&q=" + place
@@ -25,7 +31,10 @@ class weather_str:
 
         # Convert from json to python.
         j = new_data.json()
-
+        get_values(j)
+    
+    @classmethod
+    def get_values(j):
         # Key "main" is stored to var
         var = j["main"]
 
@@ -44,20 +53,25 @@ class weather_str:
 
         # Stores the values of the keys.
         weather_description = k[0]["description"]
-        #print("\nDescription = " + str(weather_description))
-        print("\nTemperature = " + str(current_temperature) + "°F")
-        weather_string = "\nTemperature = " + str(current_temperature) + "°F" + "\nDescription = " +   str(weather_description)
+        
+        # Checks API's dictionary if rain has key
+        # This certain API only includes rain within past hour
+        # if it has currently rained within each hour via EST
+        try:
+            rain = j["rain"]
+            lastHour = rain["1h"]
+            rain2 = ("It has rained: " + str(lastHour) + "within the past hour.")
+        # If no rain has occurred within the past hour, rain will not be a key in
+        # OWM's API, therefore this error statement will state that
+        # no rain has fallen within the past hour
+        except:
+            rain2 = "It has not rained within the past hour"
+        # All weather information is placed into a string and is returned when called.
+        weather_string = str("\nTemperature = " + str(current_temperature) + "°F" + "\nDescription = " +   str(weather_description) + rain2)
         print(weather_string)
         return weather_string
-test = weather_str()
-print(test)
-#def rain_total(j):
-    # Key "rain" is stored to rain
-    #rain = j["rain"]
+        
 
-    # Stores the value of the key (total amount rained in inches)
-    #lastHour = rain["1h"]
 
-# Print temperature, description, and precipitation probability.
 
-#print("Total amount of rain in last hour: " + str(lastHour) + "inches")
+
