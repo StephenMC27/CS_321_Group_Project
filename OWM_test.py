@@ -2,52 +2,55 @@
 # the data is stored into python dictionaries
 import requests
 import yaml
+class weather_str:
+    # Fairfax's weather of choice
+    place = 'Fairfax'
+    # pull api key from secure file.
+    def weather_str(place, other_place=None):
+        with open('config.yaml', 'r') as config_file:
+            config = yaml.load(config_file)
+    
+        # OpenWeatherMap API Key:
+        OWM_API_KEY = config['OWM']['OWM_api_key']
 
-# Fairfax's weather of choice
-place = 'Fairfax'
-# pull api key from secure file.
-def weather_str(place, other_place=None):
-    with open('config.yaml', 'r') as config_file:
-        config = yaml.load(config_file)
+        # OpenWeatherMap's URL
+        url = "http://api.openweathermap.org/data/2.5/weather?"
 
-    # OpenWeatherMap API Key:
-    OWM_API_KEY = config['OWM']['OWM_api_key']
+        # chain variable to store
+        # chain is used for OWM API
+        chain = url + "appid=" + OWM_API_KEY + "&q=" + place
 
-    # OpenWeatherMap's URL
-    url = "http://api.openweathermap.org/data/2.5/weather?"
+        # fetches chains data through requests.
+        new_data = requests.get(chain)
 
-    # chain variable to store
-    # chain is used for OWM API
-    chain = url + "appid=" + OWM_API_KEY + "&q=" + place
+        # Convert from json to python.
+        j = new_data.json()
 
-    # fetches chains data through requests.
-    new_data = requests.get(chain)
+        # Key "main" is stored to var
+        var = j["main"]
 
-    # Convert from json to python.
-    j = new_data.json()
+        # Key "temp" is stored to current_temperature
+        current_temperature = var["temp"]
 
-    # Key "main" is stored to var
-    var = j["main"]
+        # Calculation from kelvin to farenheit
+        current_temperature=(current_temperature-273)*9//5+32
 
-    # Key "temp" is stored to current_temperature
-    current_temperature = var["temp"]
+        # Cast current_temp to int to remove trailing decimal and zero
+        current_temperature = int(current_temperature)
+        #print("\nTemperature = " +    str(current_temperature) + "°F")
 
-    # Calculation from kelvin to farenheit
-    current_temperature=(current_temperature-273)*9//5+32
+        # Key "weather" is stored to k
+        k = j["weather"]
 
-    # Cast current_temp to int to remove trailing decimal and zero
-    current_temperature = int(current_temperature)
-    #print("\nTemperature = " +    str(current_temperature) + "°F")
-
-    # Key "weather" is stored to k
-    k = j["weather"]
-
-    # Stores the values of the keys.
-    weather_description = k[0]["description"]
-    #print("\nDescription = " + str(weather_description))
-    weather_str = "\nTemperature = " + str(current_temperature) + "°F" + "\nDescription = " + str(weather_description
-
-    return weather_str
+        # Stores the values of the keys.
+        weather_description = k[0]["description"]
+        #print("\nDescription = " + str(weather_description))
+        print("\nTemperature = " + str(current_temperature) + "°F")
+        weather_string = "\nTemperature = " + str(current_temperature) + "°F" + "\nDescription = " +   str(weather_description)
+        print(weather_string)
+        return weather_string
+test = weather_str()
+print(test)
 #def rain_total(j):
     # Key "rain" is stored to rain
     #rain = j["rain"]
