@@ -22,7 +22,7 @@ chain = url + "appid=" + OWM_API_KEY + "&q=" + place
 # fetches chains data through requests.
 new_data = requests.get(chain)
 
-# Convert from json to python
+# Convert from json to python.
 j = new_data.json()
 
 #algorithm to fetch chance of rain
