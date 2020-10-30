@@ -15,7 +15,7 @@ class Weather:
         gather_info(OWM_API_KEY)
         
     @classmethod
-    def gather_info(OWM_API_KEY):
+    def gather_info(cls, OWM_API_KEY):
         # OpenWeatherMap's URL
         url = "http://api.openweathermap.org/data/2.5/weather?"
         
@@ -34,7 +34,7 @@ class Weather:
         get_values(j)
     
     @classmethod
-    def get_values(j):
+    def get_values(cls, j):
         # Key "main" is stored to var
         var = j["main"]
 
@@ -68,7 +68,7 @@ class Weather:
             rain2 = "It has not rained within the past hour"
         # All weather information is placed into a string and is returned when called.
         weather_string = str("\nTemperature = " + str(current_temperature) + "°F" + "\nDescription = " +   str(weather_description) + rain2)
-        print(weather_string)
+        #print(weather_string)
         return weather_string
         
 
