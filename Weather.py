@@ -2,7 +2,8 @@
 # the data is stored into python dictionaries
 import requests
 import yaml
-print(it works!)
+
+print("it works!")
 class Weather:
     
     # pull api key from secure file.
