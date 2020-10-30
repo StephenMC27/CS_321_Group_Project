@@ -42,7 +42,8 @@ with open('config.yaml', 'r') as config_file:
 	try:
 		rain = j["rain"]
 		lastHour = rain["1h"]
-		rain2 = ("It has rained: " + str(lastHour) + "within the past hour.")
+		lastHour = round((lastHour/25.4),2)
+		rain2 = ("It has rained " + str(lastHour) + " inches within the past hour.")
 	except:
 		rain2 = "It has not rained within the past hour"
 
@@ -50,3 +51,6 @@ with open('config.yaml', 'r') as config_file:
 	print("\nDescription = " + str(weather_description))
 	print("Temperature = " + str(current_temperature) + "°F")
 	print(rain2)
+
+
+
