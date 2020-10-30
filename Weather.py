@@ -14,7 +14,7 @@ class Weather:
     
         # OpenWeatherMap API Key:
         OWM_API_KEY = config['OWM']['OWM_api_key']
-        gather_info(OWM_API_KEY)
+        return OWM_API_KEY
         
     @classmethod
     def gather_info(cls, OWM_API_KEY):
@@ -33,7 +33,7 @@ class Weather:
 
         # Convert from json to python.
         j = new_data.json()
-        get_values(j)
+        return j
     
     @classmethod
     def get_values(cls, j):
@@ -63,18 +63,31 @@ class Weather:
             rain = j["rain"]
             lastHour = rain["1h"]
             lastHour = round((lastHour/25.4),2)
-            rain2 = ("It has rained: " + str(lastHour) + "within the past hour.")
+            rain2 = ("\nIt has rained: " + str(lastHour) + "within the past hour.")
         # If no rain has occurred within the past hour, rain will not be a key in
         # OWM's API, therefore this error statement will state that
         # no rain has fallen within the past hour
         except:
-            rain2 = "It has not rained within the past hour"
+            rain2 = "\nIt has not rained within the past hour"
         # All weather information is placed into a string and is returned when called.
         weather_string = str("\nTemperature = " + str(current_temperature) + "°F" + "\nDescription = " +   str(weather_description) + rain2)
-        #print(weather_string)
-        return weather_string
         
+        return weather_string
 
+
+def main():
+    
+    precipObj = Weather()
+    OWM_API_KEY = precipObj.secure_key(cls)
+    j = precipObj.gather_info(cls, OWM_API_KEY)
+    weather_string = precipObj.get_values(cls, j)
+    
+    print(weather_string)
+
+        
+if __name__ == "main":
+    main()
+    
 
 
 
