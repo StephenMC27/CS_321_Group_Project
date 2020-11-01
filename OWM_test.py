@@ -2,14 +2,15 @@
 # the data is stored into python dictionaries
 import requests
 import yaml
+
 class Weather:
-    
+
     # pull api key from secure file.
     @classmethod
     def secure_key(cls):
         with open('config.yaml', 'r') as config_file:
             config = yaml.load(config_file)
-    
+
         # OpenWeatherMap API Key:
         OWM_API_KEY = config['OWM']['OWM_api_key']
         gather_info(OWM_API_KEY)
@@ -18,10 +19,10 @@ class Weather:
     def gather_info(cls, OWM_API_KEY):
         # OpenWeatherMap's URL
         url = "http://api.openweathermap.org/data/2.5/weather?"
-        
+
         # Fairfax's weather of choice
         place = 'Fairfax'
-        
+
         # chain variable to store
         # chain is used for OWM API
         chain = url + "appid=" + OWM_API_KEY + "&q=" + place
@@ -32,7 +33,7 @@ class Weather:
         # Convert from json to python.
         j = new_data.json()
         get_values(j)
-    
+
     @classmethod
     def get_values(cls, j):
         # Key "main" is stored to var
@@ -53,7 +54,7 @@ class Weather:
 
         # Stores the values of the keys.
         weather_description = k[0]["description"]
-        
+
         # Checks API's dictionary if rain has key
         # This certain API only includes rain within past hour
         # if it has currently rained within each hour via EST
@@ -70,8 +71,3 @@ class Weather:
         weather_string = str("\nTemperature = " + str(current_temperature) + "°F" + "\nDescription = " +   str(weather_description) + rain2)
         #print(weather_string)
         return weather_string
-        
-
-
-
-
