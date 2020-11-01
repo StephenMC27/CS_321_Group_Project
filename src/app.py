@@ -17,6 +17,7 @@ ACCESS_SECRET = config['twitter']['access_secret']
 def create_tweet(): #returns a Tweet object
     #get weather stuff
     #get song rec. stuff
+    Quotes.fetch_quotes('../csv/quotes.csv')
     quote = Quotes.get_quote()
     #get image stuff
     tweet = Tweet(weather, song, quote, image)
