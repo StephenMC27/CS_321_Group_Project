@@ -23,9 +23,7 @@ def create_tweet(): #returns a Tweet object
     return tweet
 
 def run_bot():
-
     #call Bot.publish_tweet(), passing in new tweet string
-
     #test tweet
     tweet = 'Testing, testing, 1, 2, 3...'
     Bot.authorize(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_KEY, ACCESS_SECRET)
