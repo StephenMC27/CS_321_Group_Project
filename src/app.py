@@ -25,8 +25,8 @@ def create_tweet(): #returns a Tweet object
     #loop to get quote that fits within Twitter's character limit
     while True:
         quote_str = Quotes.get_quote()
-        current_length = MAX_TWEET_LENGTH - len(weather_str + '\n\n' + song_str + '\n\n' + quote_str)
-        if current_length >= MAX_TWEET_LENGTH:
+        current_length = len(weather_str + '\n\n' + song_str + '\n\n' + quote_str)
+        if current_length <= MAX_TWEET_LENGTH:
             break
 
     #get image stuff
