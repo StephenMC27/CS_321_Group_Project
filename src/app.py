@@ -4,7 +4,7 @@ from tweet import Tweet
 from bot import Bot
 
 #read in API keys from config.yaml
-with open('config.yaml', 'r') as config_file:
+with open('../config/config.yaml', 'r') as config_file:
     config = yaml.load(config_file, yaml.FullLoader)
 
 #save API keys
