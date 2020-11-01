@@ -15,7 +15,7 @@ ACCESS_SECRET = config['twitter']['access_secret']
 
 #get weather stuff
 #get song rec. stuff
-#get quote stuff
+quote = Quotes.get_quote()
 #get image stuff
 #create new Tweet instance with above info
 #call Bot.publish_tweet(), passing in new tweet string
