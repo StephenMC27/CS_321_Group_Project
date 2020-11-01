@@ -3,6 +3,9 @@ import yaml
 import schedule
 from tweet import Tweet
 from bot import Bot
+from quotes import Quotes
+
+MAX_TWEET_LENGTH = 280
 
 #read in API keys from config.yaml
 with open('../config/config.yaml', 'r') as config_file:
@@ -15,12 +18,19 @@ ACCESS_KEY = config['twitter']['access_key']
 ACCESS_SECRET = config['twitter']['access_secret']
 
 def create_tweet(): #returns a Tweet object
-    #get weather stuff
-    #get song rec. stuff
+    weather_str = '54 F, light rain' #test
+    song_str = '<link to spotify>' #test
     Quotes.fetch_quotes('../csv/quotes.csv')
-    quote = Quotes.get_quote()
+
+    #loop to get quote that fits within Twitter's character limit
+    while True:
+        quote_str = Quotes.get_quote()
+        current_length = MAX_TWEET_LENGTH - len(weather_str + '\n\n' + song_str + '\n\n' + quote_str)
+        if current_length >= MAX_TWEET_LENGTH:
+            break
+
     #get image stuff
-    tweet = Tweet('54 F, light rain', '<link to spotify>', quote)
+    tweet = Tweet(weather_str, song_str, quote_str)
     return tweet
 
 def run_bot():
@@ -31,7 +41,8 @@ def run_bot():
     Bot.publish_tweet(tweet_str)
 
 schedule.every().day.at("08:00").do(run_bot)
+run_bot() #test
 
-if __name__ == '__main__':
-    while True:
-        schedule.run_pending()
+# if __name__ == '__main__':
+#     while True:
+#         schedule.run_pending()
