@@ -20,15 +20,15 @@ def create_tweet(): #returns a Tweet object
     Quotes.fetch_quotes('../csv/quotes.csv')
     quote = Quotes.get_quote()
     #get image stuff
-    tweet = Tweet(weather, song, quote, image)
+    tweet = Tweet('54 F, light rain', '<link to spotify>', quote)
     return tweet
 
 def run_bot():
     #call Bot.publish_tweet(), passing in new tweet string
-    #test tweet
-    tweet = 'Testing sheduled tweet...8:00AM on the dot!'
+    tweet = create_tweet()
+    tweet_str = tweet.format()
     Bot.authorize(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_KEY, ACCESS_SECRET)
-    Bot.publish_tweet(tweet)
+    Bot.publish_tweet(tweet_str)
 
 schedule.every().day.at("08:00").do(run_bot)
 
