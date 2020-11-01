@@ -29,7 +29,7 @@ def run_bot():
     Bot.authorize(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_KEY, ACCESS_SECRET)
     Bot.publish_tweet(tweet)
 
-schedule.every().day.at.("8:00").do(run_bot)
+schedule.every().day.at("8:00").do(run_bot)
 
 if __name__ == '__main__':
     while True:
