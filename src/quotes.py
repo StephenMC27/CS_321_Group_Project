@@ -18,8 +18,8 @@ class Quotes:
     def get_quote(cls):
         return(random.choice(cls.quotes)[0])
 
-if __name__ == '__main__':
-    Quotes.fetch_quotes('../csv/quotes.csv')
-    print(Quotes.quotes)
-    random_quote = Quotes.get_quote()
-    print(random_quote)
+# if __name__ == '__main__':
+#     Quotes.fetch_quotes('../csv/quotes.csv')
+#     print(Quotes.quotes)
+#     random_quote = Quotes.get_quote()
+#     print(random_quote)
