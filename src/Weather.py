@@ -5,25 +5,25 @@ import yaml
 
 print("it works!")
 class Weather:
-    
+
     # pull api key from secure file.
     @classmethod
     def secure_key(cls):
-        with open('config.yaml', 'r') as config_file:
+        with open('../config/config.yaml', 'r') as config_file:
             config = yaml.load(config_file)
-    
+
         # OpenWeatherMap API Key:
         OWM_API_KEY = config['OWM']['OWM_api_key']
         return OWM_API_KEY
-        
+
     @classmethod
     def gather_info(cls, OWM_API_KEY):
         # OpenWeatherMap's URL
         url = "http://api.openweathermap.org/data/2.5/weather?"
-        
+
         # Fairfax's weather of choice
         place = 'Fairfax'
-        
+
         # chain variable to store
         # chain is used for OWM API
         chain = url + "appid=" + OWM_API_KEY + "&q=" + place
@@ -34,7 +34,7 @@ class Weather:
         # Convert from json to python.
         j = new_data.json()
         return j
-    
+
     @classmethod
     def get_values(cls, j):
         # Key "main" is stored to var
@@ -55,7 +55,7 @@ class Weather:
 
         # Stores the values of the keys.
         weather_description = k[0]["description"]
-        
+
         # Checks API's dictionary if rain has key
         # This certain API only includes rain within past hour
         # if it has currently rained within each hour via EST
@@ -71,23 +71,19 @@ class Weather:
             rain2 = "\nIt has not rained within the past hour"
         # All weather information is placed into a string and is returned when called.
         weather_string = str("\nTemperature = " + str(current_temperature) + "°F" + "\nDescription = " +   str(weather_description) + rain2)
-        
+
         return weather_string
 
 
 def main():
-    
+
     precipObj = Weather()
     OWM_API_KEY = precipObj.secure_key(cls)
     j = precipObj.gather_info(cls, OWM_API_KEY)
     weather_string = precipObj.get_values(cls, j)
-    
+
     print(weather_string)
 
-        
+
 if __name__ == "main":
     main()
-    
-
-
-
