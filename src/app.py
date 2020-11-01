@@ -14,14 +14,16 @@ CONSUMER_SECRET = config['twitter']['consumer_secret']
 ACCESS_KEY = config['twitter']['access_key']
 ACCESS_SECRET = config['twitter']['access_secret']
 
-def gather_content():
-
-def run_bot():
+def create_tweet(): #returns a Tweet object
     #get weather stuff
     #get song rec. stuff
     quote = Quotes.get_quote()
     #get image stuff
-    #create new Tweet instance with above info
+    tweet = Tweet(weather, song, quote, image)
+    return tweet
+
+def run_bot():
+
     #call Bot.publish_tweet(), passing in new tweet string
 
     #test tweet
