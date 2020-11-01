@@ -1,5 +1,6 @@
 import tweepy
 import yaml
+import schedule
 from tweet import Tweet
 from bot import Bot
 
