@@ -25,6 +25,12 @@ def create_tweet(): #returns a Tweet object
 def run_bot():
     #call Bot.publish_tweet(), passing in new tweet string
     #test tweet
-    tweet = 'Testing, testing, 1, 2, 3...'
+    tweet = 'Testing sheduled tweet...8:00AM on the dot!'
     Bot.authorize(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_KEY, ACCESS_SECRET)
     Bot.publish_tweet(tweet)
+
+schedule.every().day.at.("8:00").do(run_bot)
+
+if __name__ == '__main__':
+    while True:
+        schedule.run_pending()
