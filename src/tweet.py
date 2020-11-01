@@ -1,6 +1,6 @@
 class Tweet:
 
-    def __init__(self, weather_str: str, song_str: str, quote_str: str, image):
+    def __init__(self, weather_str: str, song_str: str, quote_str: str): #needs to include image in final version
         self.weather_str = weather_str
         self.song_str = song_str
         self.quote_str = quote_str
