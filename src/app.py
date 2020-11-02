@@ -19,10 +19,11 @@ ACCESS_KEY = config['twitter']['access_key']
 ACCESS_SECRET = config['twitter']['access_secret']
 
 def create_tweet(): #returns a Tweet object
-    weather_str = 'Sample weather' #test
+    weather_str = '<Sample weather>' #test
     song_str = '<link to spotify>' #test
     Quotes.fetch_quotes('../csv/quotes.csv')
-	Photo.fetch_photo() # fetches new photo for the day
+    Photo.fetch_photo() #fetches photo for tweet
+	
 
     #loop to get quote that fits within Twitter's character limit
     while True:
