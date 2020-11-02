@@ -8,7 +8,7 @@ class Quotes:
     @classmethod
     def fetch_quotes(cls, csv_file):
         #open csv file
-        with open(csv_file, newline='') as quotes_file:
+        with open(csv_file, newline='', encoding="utf8") as quotes_file:
             #read quotes into list
             quote_reader = csv.reader(quotes_file)
             for row in quote_reader:
