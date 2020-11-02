@@ -20,6 +20,7 @@ class Bot:
     @classmethod
     def publish_tweet(cls, tweet_str):
         try:
+			# tweet with formatted string and today's image
             cls.api.update_with_media("../images/todayspic.jpg",tweet_str)
             print('Tweet successfully published!')
         except:
