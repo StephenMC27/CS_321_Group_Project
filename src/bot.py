@@ -20,7 +20,7 @@ class Bot:
     @classmethod
     def publish_tweet(cls, tweet_str):
         try:
-            cls.api.update_status(tweet_str)
+            cls.api.update_with_media("../images/todayspic.jpg",tweet_str)
             print('Tweet successfully published!')
         except:
             print('Error: Twitter API access has not been established.')
