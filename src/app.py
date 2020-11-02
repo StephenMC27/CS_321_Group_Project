@@ -4,6 +4,7 @@ import schedule
 from tweet import Tweet
 from bot import Bot
 from quotes import Quotes
+from photo import Photo
 
 MAX_TWEET_LENGTH = 280
 
@@ -21,6 +22,7 @@ def create_tweet(): #returns a Tweet object
     weather_str = 'Sample weather' #test
     song_str = '<link to spotify>' #test
     Quotes.fetch_quotes('../csv/quotes.csv')
+	Photo.fetch_photo() # fetches new photo for the day
 
     #loop to get quote that fits within Twitter's character limit
     while True:
