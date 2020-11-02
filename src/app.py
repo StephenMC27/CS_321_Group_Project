@@ -18,7 +18,7 @@ ACCESS_KEY = config['twitter']['access_key']
 ACCESS_SECRET = config['twitter']['access_secret']
 
 def create_tweet(): #returns a Tweet object
-    weather_str = '54 F, light rain' #test
+    weather_str = 'Sample weather' #test
     song_str = '<link to spotify>' #test
     Quotes.fetch_quotes('../csv/quotes.csv')
 
