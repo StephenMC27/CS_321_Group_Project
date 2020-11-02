@@ -5,7 +5,7 @@ class Photo:
     @classmethod
     def fetch_photo(cls):
 	    #fetch new image from lorem picsum
-        filename = '../images/todayspic.jpg'
+        filename = '../imagecache/todayspic.jpg'
         request = requests.get("https://picsum.photos/400", stream=True)
         if request.status_code == 200:
             with open(filename, 'wb') as image:
@@ -13,5 +13,3 @@ class Photo:
                     image.write(c)
         else:
             print("Unable to download image, using previous cached image")
-			
-Photo.fetch_photo()
