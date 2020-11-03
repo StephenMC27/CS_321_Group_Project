@@ -5,6 +5,7 @@ from tweet import Tweet
 from bot import Bot
 from quotes import Quotes
 from photo import Photo
+from spotify import Spotify
 
 MAX_TWEET_LENGTH = 280
 
@@ -20,10 +21,10 @@ ACCESS_SECRET = config['twitter']['access_secret']
 
 def create_tweet(): #returns a Tweet object
     weather_str = '<Sample weather>' #test
-    song_str = '<link to spotify>' #test
+    Spotify.fetch_songs() # want to change this to only do this once a week
+    song_str = Spotify.get_song(0) # instead of zero, pass in day of week
     Quotes.fetch_quotes('../csv/quotes.csv')
     Photo.fetch_photo() #fetches photo for tweet
-	
 
     #loop to get quote that fits within Twitter's character limit
     while True:
