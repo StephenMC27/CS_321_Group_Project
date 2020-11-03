@@ -9,6 +9,6 @@ class Tweet:
     def format(self) -> str:
         tweet_str = 'Good Morning, GMU!\n\n'
         tweet_str += f'Current weather in Fairfax: {self.weather_str}\n\n'
-        tweet_str += f'Listen to this: {self.song_str}\n\n'
+        tweet_str += f'New release: {self.song_str}\n\n'
         tweet_str += self.quote_str
         return tweet_str
