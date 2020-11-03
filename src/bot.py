@@ -20,7 +20,7 @@ class Bot:
     @classmethod
     def publish_tweet(cls, tweet_str):
         try:
-			# tweet with formatted string and today's image media
+	    # tweet with formatted string and today's image media
             media = cls.api.media_upload("../imagecache/todayspic.jpg")
             cls.api.update_status(status=tweet_str, media_ids=[media.media_id])
             print('Tweet successfully published!')
