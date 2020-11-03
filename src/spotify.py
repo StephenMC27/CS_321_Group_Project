@@ -33,17 +33,3 @@ class Spotify:
     @classmethod
     def get_song(cls, day):
         return(cls.weeklySongs[day])
-
-
-"""
-# call to grab items from weekly new release playlist, with random offset
-result1 = sp.playlist_items(playlist_id='37i9dQZF1DX4JAvHpjipBk', offset=rand_Offset, limit=7, additional_types={'track'})
-
-# print track url for each track desired
-for idx, track in enumerate(result1['items']):
-	trackInfo = track['track']
-	# info: trackInfo['name']
-	# track id: trackInfo['id']
-	# spotify external url: trackInfo['external_urls']['spotify']
-	print(rand_Offset+idx, " spotify url: " + trackInfo['external_urls']['spotify'])
-"""
