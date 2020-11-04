@@ -65,14 +65,14 @@ class Weather:
             rain = j["rain"]
             lastHour = rain["1h"]
             lastHour = round((lastHour/25.4),2)
-            rain2 = ("\n, It has rained: " + str(lastHour) + "within the past hour.\n")
+            rain2 = ("\n, It has rained: " + str(lastHour) + "within past hour.\n")
         # If no rain has occurred within the past hour, rain will not be a key in
         # OWM's API, therefore this error statement will state that
         # no rain has fallen within the past hour
         except:
-            rain2 = ", no rain within the past hour\n"
+            rain2 = ", no rain within past hour\n"
         # All weather information is placed into a string and is returned when called.
-        w2 = str(current_temperature) + "°F, " + str(weather_description) + rain2
+        w2 = "\n" +str(current_temperature) + "°F, " + str(weather_description) + rain2
         
         return w2
 
