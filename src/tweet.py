@@ -4,7 +4,7 @@ class Tweet:
         self.weather_str = weather_str
         self.song_str = song_str
         self.quote_str = quote_str
-        self.image = image_path
+        self.image_path = image_path
 
     def format(self) -> str:
         tweet_str = 'Good Morning, GMU!\n\n'
