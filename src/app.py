@@ -45,9 +45,8 @@ def create_tweet(): #returns a Tweet object
 def run_bot():
     #call Bot.publish_tweet(), passing in new tweet string
     tweet = create_tweet()
-    tweet_str = tweet.format()
     Bot.authorize(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_KEY, ACCESS_SECRET)
-    Bot.publish_tweet(tweet_str)
+    Bot.publish_tweet(tweet)
 
 schedule.every().day.at("08:05").do(run_bot)
 run_bot() #test
