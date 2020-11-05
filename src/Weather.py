@@ -65,30 +65,30 @@ class Weather:
             rain = j["rain"]
             lastHour = rain["1h"]
             lastHour = round((lastHour/25.4),2)
-            rain2 = ("\n, It has rained: " + str(lastHour) + "within the past hour.\n")
+            rain2 = ("\n, It has rained: " + str(lastHour) + "within past hour.\n")
         # If no rain has occurred within the past hour, rain will not be a key in
         # OWM's API, therefore this error statement will state that
         # no rain has fallen within the past hour
         except:
-            rain2 = ", no rain within the past hour\n"
+            rain2 = ", no rain within past hour\n"
         # All weather information is placed into a string and is returned when called.
-        w2 = str(current_temperature) + "°F, " + str(weather_description) + rain2
+        w2 = "\n" +str(current_temperature) + "°F, " + str(weather_description) + rain2
         
         return w2
 
-
-def main():
+# below is a tester 
+#def main():
     
-    precipObj = Weather() #into class
-    OWM_API_KEY = precipObj.secure_key() #pulls from file(returns API KEY)
-    j = precipObj.gather_info(OWM_API_KEY) #pulls dictionary for weather info from API
-    w2 = precipObj.get_values(j) #stores values into strings
-    print(w2) # To see output, delete comment
-    return w2
+    #precipObj = Weather() #into class
+    #OWM_API_KEY = precipObj.secure_key() #pulls from file(returns API KEY)
+    #j = precipObj.gather_info(OWM_API_KEY) #pulls dictionary for weather info from API
+    #w2 = precipObj.get_values(j) #stores values into strings
+    #print(w2) # To see output, delete comment
+    #return w2
 
         
-if __name__ == "__main__":
-    main()
+#if __name__ == "__main__":
+ #   main()
     
 
 
