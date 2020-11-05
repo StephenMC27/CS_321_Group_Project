@@ -9,6 +9,7 @@ from spotify import Spotify
 from weather import Weather
 
 MAX_TWEET_LENGTH = 280
+PHOTO_PATH = '../imagecache/todayspic.jpg'
 
 #read in API keys from config.yaml
 with open('../config/config.yaml', 'r') as config_file:
@@ -38,7 +39,7 @@ def create_tweet(): #returns a Tweet object
             break
 
     #get image stuff
-    tweet = Tweet(weather_str, song_str, quote_str)
+    tweet = Tweet(weather_str, song_str, quote_str, PHOTO_PATH)
     return tweet
 
 def run_bot():
