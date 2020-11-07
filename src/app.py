@@ -22,10 +22,8 @@ ACCESS_KEY = config['twitter']['access_key']
 ACCESS_SECRET = config['twitter']['access_secret']
 
 def create_tweet(): #returns a Tweet object
-    precipObj = Weather() #into class
-    OWM_API_KEY = precipObj.secure_key() #pulls from file(returns API KEY)
-    j = precipObj.gather_info(OWM_API_KEY) #pulls dictionary for weather info from API
-    weather_str = precipObj.get_values(j) #stores values into strings
+    Weather.gather_info()
+    weather_str = Weather.get_values(Weather.j)
     Spotify.fetch_songs() # want to change this to only do this once a week
     song_str = Spotify.get_song(0) # instead of zero, pass in day of week
     Quotes.fetch_quotes('../csv/quotes.csv')
