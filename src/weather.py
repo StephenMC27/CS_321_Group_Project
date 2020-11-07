@@ -78,7 +78,6 @@ class Weather:
         
 
 
-
 '''
 def main():
     Weather.gather_info()
