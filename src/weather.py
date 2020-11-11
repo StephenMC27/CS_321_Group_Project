@@ -65,7 +65,7 @@ class Weather:
             rain = j["rain"]
             lastHour = rain["1h"]
             lastHour = round((lastHour/25.4),2)
-            rain2 = (",\nit has rained: " + str(lastHour) + " inches within past hour.\n")
+            rain2 = (",\nit has rained: " + str(lastHour) + " inches within the hour.\n")
         # If no rain has occurred within the past hour, rain will not be a key in
         # OWM's API, therefore this error statement will state that
         # no rain has fallen within the past hour
