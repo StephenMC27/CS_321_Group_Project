@@ -1,6 +1,6 @@
 import requests
 
-def fetch_photo(cls):
+def fetch_photo():
     #fetch new image from lorem picsum
     filename = '../imagecache/todayspic.jpg'
     request = requests.get("https://picsum.photos/800", stream=True)
