@@ -23,16 +23,16 @@ ACCESS_KEY = config['twitter']['access_key']
 ACCESS_SECRET = config['twitter']['access_secret']
 
 def create_tweet(): #returns a Tweet object
-    Weather.gather_info()
-    weather_str = Weather.get_values(Weather.j)
+    weather.gather_info()
+    weather_str = weather.get_values(weather.j)
     Spotify.fetch_songs() # want to change this to only do this once a week
     song_str = Spotify.get_song(0) # instead of zero, pass in day of week
-    Quotes.fetch_quotes('../csv/quotes.csv')
+    quotes.fetch_quotes('../csv/quotes.csv')
     Photo.fetch_photo() #fetches photo for tweet
 
     #loop to get quote that fits within Twitter's character limit
     while True:
-        quote_str = Quotes.get_quote()
+        quote_str = quotes.get_quote()
         current_length = len(weather_str + '\n\n' + song_str + '\n\n' + quote_str)
         if current_length <= MAX_TWEET_LENGTH:
             break

@@ -1,22 +1,19 @@
 import csv
 import random
 
-class Quotes:
+quotes = []
 
-    quotes = []
+def fetch_quotes(csv_file):
+    global quotes
+    #open csv file
+    with open(csv_file, newline='', encoding="utf8") as quotes_file:
+        #read quotes into list
+        quote_reader = csv.reader(quotes_file)
+        for row in quote_reader:
+            quotes.append(row)
 
-    @classmethod
-    def fetch_quotes(cls, csv_file):
-        #open csv file
-        with open(csv_file, newline='', encoding="utf8") as quotes_file:
-            #read quotes into list
-            quote_reader = csv.reader(quotes_file)
-            for row in quote_reader:
-                cls.quotes.append(row)
-
-    @classmethod
-    def get_quote(cls):
-        return(random.choice(cls.quotes)[0])
+def get_quote():
+    return(random.choice(quotes)[0])
 
 # if __name__ == '__main__':
 #     Quotes.fetch_quotes('../csv/quotes.csv')
