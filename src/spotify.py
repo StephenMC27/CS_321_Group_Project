@@ -6,6 +6,7 @@ from spotipy.oauth2 import SpotifyClientCredentials
 weeklySongs = []
 
 def fetch_songs(cls):
+    global weeklySongs
     #read in API keys from config.yaml
     with open('../config/config.yaml', 'r') as config_file:
         config = yaml.load(config_file, Loader=yaml.FullLoader)
@@ -25,7 +26,8 @@ def fetch_songs(cls):
     # print track url for each track desired
     for idx, track in enumerate(result1['items']):
         trackInfo = track['track']
-        cls.weeklySongs.append(trackInfo['external_urls']['spotify'])
+        weeklySongs.append(trackInfo['external_urls']['spotify'])
 
 def get_song(cls, day):
-    return(cls.weeklySongs[day])
+    global weeklySongs
+    return(weeklySongs[day])
