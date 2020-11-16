@@ -5,28 +5,28 @@ import yaml
 
 # Weather Class
 class Weather:
-    
+
     j = None
     w2 = None
-    
+
     # pull api key from secure file.
     @classmethod
     def gather_info(cls):
-    
-        with open('config.yaml', 'r') as config_file:
-            
+
+        with open('../config/config.yaml', 'r') as config_file:
+
             # safely accesses API key
             config = yaml.safe_load(config_file)
-    
+
         # OpenWeatherMap API Key:
         OWM_API_KEY = config['OWM']['OWM_api_key']
-        
+
         # OpenWeatherMap's URL
         url = "http://api.openweathermap.org/data/2.5/weather?"
-        
+
         # Fairfax's weather of choice
         place = 'Fairfax'
-        
+
         # chain variable to store
         # chain is used for OWM API
         chain = url + "appid=" + OWM_API_KEY + "&q=" + place
@@ -57,7 +57,7 @@ class Weather:
 
         # Stores the values of the keys.
         weather_description = k[0]["description"]
-        
+
         # Checks API's dictionary if rain has key
         # This certain API only includes rain within past hour
         # if it has currently rained within each hour via EST
@@ -75,7 +75,7 @@ class Weather:
         cls.w2 = "\n" +str(current_temperature) + "°F, " + str(weather_description) + rain2
         # Accesses class variable w2 and returns the weather string
         return Weather.w2
-        
+
 
 
 '''
@@ -83,7 +83,7 @@ def main():
     Weather.gather_info()
     Weather.get_values(Weather.j)
     return w2
-    
+
 if __name__ == '__main__':
     main()
 '''
