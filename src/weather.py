@@ -8,7 +8,7 @@ w2 = None
 
 # pull api key from secure file.
 def gather_info():
-
+    global j
     with open('../config/config.yaml', 'r') as config_file:
 
         # safely accesses API key
