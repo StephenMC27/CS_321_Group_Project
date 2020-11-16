@@ -13,6 +13,7 @@ def fetch_quotes(csv_file):
             quotes.append(row)
 
 def get_quote():
+    global quotes
     return(random.choice(quotes)[0])
 
 # if __name__ == '__main__':
