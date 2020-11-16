@@ -1,12 +1,13 @@
 import tweepy
 import yaml
 import schedule
-from tweet import Tweet
-from bot import Bot
-from quotes import Quotes
+import bot
+import quotes
+import weather
 from photo import Photo
 from spotify import Spotify
-from weather import Weather
+import weather
+from tweet import Tweet
 
 MAX_TWEET_LENGTH = 280
 PHOTO_PATH = '../imagecache/todayspic.jpg'
@@ -43,8 +44,8 @@ def create_tweet(): #returns a Tweet object
 def run_bot():
     #call Bot.publish_tweet(), passing in new tweet string
     tweet = create_tweet()
-    Bot.authorize(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_KEY, ACCESS_SECRET)
-    Bot.publish_tweet(tweet)
+    bot.authorize(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_KEY, ACCESS_SECRET)
+    bot.publish_tweet(tweet)
 
 schedule.every().day.at("08:05").do(run_bot)
 run_bot() #test
